@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ドカエル学習アプリ ポータル</title>
+    <style>
+        :root {
+            --primary: #1cb0f6;
+            --bg: #f7f7f7;
+            --text: #3c3c3c;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+        .app-card {
+            background: white;
+            border: 2px solid #e5e5e5;
+            border-radius: 15px;
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .app-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .app-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+        .app-desc {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        .launch-btn {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>ドカエル用</h1>
+    
+    <div class="app-grid" id="app-grid">
+        </div>
+
+    <div class="footer">
+        &copy; 2026 dokaeru Learning Project
+    </div>
+
+    <script>
+        // --- 今後アプリを増やす時は、ここに追加するだけ！ ---
+        const apps = [
+            {
+                title: "HSK 1-4級 総合学習",
+                filename: "test.html",
+                description: "作文(日→中)と読解(中→日)の両方に対応した最新版。"
+            },
+            //{
+            //    title: "HSK 3級 集中特訓",
+            //    filename: "hsk3v7_test3.html",
+            //    description: "HSK 3級の単語に特化したトレーニングツール。"
+            //}
+            // { title: "新しいアプリ", filename: "app3.html", description: "説明文..." }
+        ];
+
+        const grid = document.getElementById('app-grid');
+
+        apps.forEach(app => {
+            const card = document.createElement('a');
+            card.href = app.filename;
+            card.className = 'app-card';
+            card.innerHTML = `
+                <div>
+                    <div class="app-title">${app.title}</div>
+                    <div class="app-desc">${app.description}</div>
+                </div>
+                <div class="launch-btn">アプリを起動</div>
+            `;
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
